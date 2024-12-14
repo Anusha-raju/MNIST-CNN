@@ -140,7 +140,7 @@ print(summary(model, input_size=(1, 28, 28)))
 print("\n Training and testing the model \n")
 
 optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
-scheduler = StepLR(optimizer, step_size=22, gamma=0.17)
+scheduler = StepLR(optimizer, step_size=9, gamma=0.17)
 
 model_fiteval = FitEvaluate(model, device,mnist_data.train_loader,mnist_data.test_loader)
 model_fiteval.epoch_training(optimizer, scheduler = scheduler)
