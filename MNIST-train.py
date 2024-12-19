@@ -56,7 +56,6 @@ class Net(nn.Module):
         super(Net, self).__init__()
 
         self.convblock1 = nn.Sequential(
-
             self.depthwise_separable_conv(1, 10, kernel_size=3, padding=1),  # output = 28x28, receptive field = 3x3
             nn.BatchNorm2d(10),
             nn.ReLU(),
@@ -109,7 +108,6 @@ class Net(nn.Module):
         )
         self.avgpool = nn.AdaptiveAvgPool2d(1)  # output_size = 1x1, receptive field = 224x224 (since global avg pool covers entire input)
 
-
     def depthwise_separable_conv(self, in_channels, out_channels, kernel_size=3, padding=1):
         """Depthwise Separable Convolution (Depthwise + Pointwise)"""
         # Depthwise Convolution
@@ -124,17 +122,15 @@ class Net(nn.Module):
         return nn.Sequential(depthwise_conv, pointwise_conv)
 
     def forward(self, x):
+        x = self.convblock1(x)
+        x = self.pool1(x)
+        x = self.convblock2(x)
+        x = self.avgpool(x)
+        x = x.view(-1, 10)
+        return F.log_softmax(x, dim=-1)
 
-      x = self.convblock1(x)
-      x = self.pool1(x)
-      x = self.convblock2(x)
-      x = self.avgpool(x)
-      x = x.view(-1, 10)
-      return F.log_softmax(x, dim=-1)
 
 
-    
->>>>>>> eb82c1b2483a9890a8632bff46c52199114f7b26
     
 
 #Model Summary
