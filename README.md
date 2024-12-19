@@ -1,4 +1,4 @@
-#MNIST Model Training
+# MNIST Model Training
 
 This repository demonstrates a lightweight convolutional neural network (CNN) model for classifying MNIST digits using PyTorch. The code incorporates several steps for model development, including data loading, transformation, model architecture design, training, and evaluation. Additionally, various techniques such as batch normalization, dropout, and data augmentation are applied to improve model performance.
 
@@ -29,13 +29,13 @@ The MNIST (Modified National Institute of Standards and Technology) dataset is a
 
 ## Methodolgy
 
-To stepwise build the architecture of the CNN model to predict the hand written digit image from MNIST.
+To progressively construct the architecture of the CNN model for predicting handwritten digit images from the MNIST dataset.
 
 
 
 ***The process is divided into 3 parts/steps:***
 
-All the parts follow the following code exceution steps:
+All the parts follow the following code execution steps:
 
 1. Applying *Transformations* on Data
 
@@ -61,7 +61,7 @@ Visualization of Sample Images from MNIST dataset
 
 ![Sample Images](https://raw.githubusercontent.com/Anusha-raju/MNIST-CNN/main/images/Sample%20Images.png)
 
-**Part-1**
+# Part-1
 
 **Target**: Focusing on basic setting up the code and skeleton of the model along with keeping the model lighter.
 
@@ -87,13 +87,13 @@ Best Test Accuracy: 98.87%
 
 **Analysis:** The model is light & no overfitting, but is not reaching the final expectation.
 
-##############################################################
 
 
 
 
 
-**Part-2**
+
+# Part-2
 
 **Target**: To decrease the difference between the train and test accuarcy by adding batch normalization, regularization (dropout) , Gap(global average pooling) and also removed the last big kernel
 
@@ -119,17 +119,39 @@ Best Test Accuracy: 98.67%
 
 **Analysis:** The model is more lighter but the accuracies have reduced. This is sort of predicted given that the comparision is between a 8716 parameter model to 3964 parameter model.
 
-**Part-3**
+# Part-3
 
-**Target**:
+This model is trained on EC2 instance.
+
+**Target**: Applied a random rotation of 7 degrees on training sample and set up a learning rate scheduler.
 
 **Model Summary**
+
+
+
+
 
 **Traning & Test accuracies**
 
 **Overall Result:**
 
+Parameters: 7,926
+
+Best Training Accuracy: 99.38 %
+
+Best Test Accuracy: 99.47%
+
 **Analysis:**
+
+The CNN model was successfully trained to predict digits from the MNIST dataset with fewer than 8k parameters, achieving a consistent accuracy of at least 99.4% in under 15 epochs, while minimizing the gap between training and test accuracy.
+
+
+
+# Reference links
+
+
+
+[Training Notebook]()
 
 ## Acknowledgments
 
