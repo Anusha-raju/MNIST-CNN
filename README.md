@@ -123,23 +123,29 @@ Best Test Accuracy: 98.67%
 
 This model is trained on EC2 instance.
 
-**Target**: Applied a random rotation of 7 degrees on training sample and set up a learning rate scheduler.
+**Target**: 
+A random rotation of 15 degrees is applied to the training sample, followed by cropping the image to 22x22 pixels. This occurs with a 10% probability. Additionally, a learning rate scheduler is set up.
 
 **Model Summary**
 
+![Model Summary](https://raw.githubusercontent.com/Anusha-raju/MNIST-CNN/main/images/model%203%20summary.png)
 
 
 
 
 **Traning & Test accuracies**
 
+![Model 3 Epoch](https://raw.githubusercontent.com/Anusha-raju/MNIST-CNN/main/images/model%20%203%20epoch.png)
+
+
 **Overall Result:**
 
-Parameters: 7,926
 
-Best Training Accuracy: 99.38 %
+  Parameters: 7,926
 
-Best Test Accuracy: 99.47%
+  Best Training Accuracy: 98.99 %
+
+  Best Test Accuracy: 99.48%
 
 **Analysis:**
 
