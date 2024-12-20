@@ -106,7 +106,8 @@ class Net(nn.Module):
             nn.ReLU(),
             self.depthwise_separable_conv(13, 10, kernel_size=1, padding=0)  # output = 14x14, receptive field = 72x72
         )
-        self.avgpool = nn.AdaptiveAvgPool2d(1)  # output_size = 1x1
+        self.avgpool = nn.AdaptiveAvgPool2d(1)  # output_size = 1x1, receptive field = 224x224 (since global avg pool covers entire input)
+
     def depthwise_separable_conv(self, in_channels, out_channels, kernel_size=3, padding=1):
         """Depthwise Separable Convolution (Depthwise + Pointwise)"""
         # Depthwise Convolution
@@ -127,6 +128,9 @@ class Net(nn.Module):
         x = self.avgpool(x)
         x = x.view(-1, 10)
         return F.log_softmax(x, dim=-1)
+
+
+
     
 
 #Model Summary
@@ -137,9 +141,10 @@ print(summary(model, input_size=(1, 28, 28)))
 
 print("\n Training and testing the model \n")
 
-
 optimizer = optim.SGD(model.parameters(), lr=0.05, momentum=0.9)
-scheduler = StepLR(optimizer, step_size=5, gamma=0.4)
+scheduler = StepLR(optimizer, step_size=4, gamma=0.4)
 
 model_fiteval = FitEvaluate(model, device,mnist_data.train_loader,mnist_data.test_loader)
 model_fiteval.epoch_training(optimizer, scheduler = scheduler)
+
+

@@ -46,7 +46,7 @@ class FitEvaluate:
 
         # Update pbar-tqdm
 
-        pred = y_pred.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
+        pred = y_pred.argmax(dim=1, keepdim=True) 
         correct += pred.eq(target.view_as(pred)).sum().item()
         processed += len(data)
 
@@ -65,8 +65,8 @@ class FitEvaluate:
           for data, target in self.test_loader:
               data, target = data.to(device), target.to(device)
               output = self.model(data)
-              test_loss += F.nll_loss(output, target, reduction='sum').item()  # sum up batch loss
-              pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
+              test_loss += F.nll_loss(output, target, reduction='sum').item() 
+              pred = output.argmax(dim=1, keepdim=True) 
               correct += pred.eq(target.view_as(pred)).sum().item()
 
       test_loss /= len(self.test_loader.dataset)
@@ -118,8 +118,8 @@ class MNIST_DATA:
 
   def stats(self):
     try:
-      train_data = self.train.train_data
-      train_data = self.train.transform(train_data.numpy())
+      train_data = self.train.data
+      train_data = train_data.float()
       print("********* Train Data Stats *********")
       print(' - Numpy Shape:', self.train.train_data.cpu().numpy().shape)
       print(' - Tensor Shape:', self.train.train_data.size())
@@ -137,7 +137,7 @@ class MNIST_DATA:
     try:
         train_loader = self.train_loader
         dataiter = iter(train_loader)
-        images, labels = next(dataiter)  # Use `next(dataiter)` instead of `dataiter.next()`
+        images, labels = next(dataiter)
 
         print(" Batch Shape: ", images.shape)
         print(" Labels of the images: ", labels.shape)
@@ -147,7 +147,7 @@ class MNIST_DATA:
             plt.subplot(6, 10, index)
             plt.axis('off')
             plt.imshow(images[index].numpy().squeeze(), cmap='gray_r')
-        plt.show()  # Make sure to display the plot
+        plt.show() 
 
     except Exception as ex:
         print(f"Exception in showimages function: {ex}")
