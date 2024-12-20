@@ -84,7 +84,7 @@ class Net(nn.Module):
 
 # Model 2
 
-class Net(nn.Module):
+class Net2(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
         # Input Block
