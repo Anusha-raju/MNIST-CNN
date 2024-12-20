@@ -113,9 +113,9 @@ Best Test Accuracy: 98.87%
 
 Parameters: 3,964
 
-Best Training Accuracy: 98.45 %
+  Best Training Accuracy: 98.48 %
 
-Best Test Accuracy: 98.67%
+  Best Test Accuracy: 98.69%
 
 **Analysis:** The model is more lighter but the accuracies have reduced. This is sort of predicted given that the comparision is between a 8716 parameter model to 3964 parameter model.
 
