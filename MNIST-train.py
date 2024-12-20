@@ -106,8 +106,7 @@ class Net(nn.Module):
             nn.ReLU(),
             self.depthwise_separable_conv(13, 10, kernel_size=1, padding=0)  # output = 14x14, receptive field = 72x72
         )
-        self.avgpool = nn.AdaptiveAvgPool2d(1)  # output_size = 1x1, receptive field = 224x224 (since global avg pool covers entire input)
-
+        self.avgpool = nn.AdaptiveAvgPool2d(1)  # output_size = 1x1
     def depthwise_separable_conv(self, in_channels, out_channels, kernel_size=3, padding=1):
         """Depthwise Separable Convolution (Depthwise + Pointwise)"""
         # Depthwise Convolution
@@ -128,6 +127,7 @@ class Net(nn.Module):
         x = self.avgpool(x)
         x = x.view(-1, 10)
         return F.log_softmax(x, dim=-1)
+
 
 
 
